@@ -1,0 +1,1 @@
+INSERT INTO Products (description, type) VALUES ('First homemade magic mirror', 'medium');
