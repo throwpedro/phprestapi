@@ -1,20 +1,20 @@
 <?php
-class Database{
+
+require_once("connectionSettings.php");
+class Database
+{
  
-    // specify your own database credentials
-    private $host = "localhost";
-    private $db_name = "phprestapi";
-    private $username = "thor";
-    private $password = "";
     public $conn;
- 
+
     // get the database connection
-    public function getConnection(){
- 
+    public function getConnection()
+    {
+        $settings = new ConnectionSettings();
+        $credentials = $settings->getCredentials();
         $this->conn = null;
- 
+        
         try{
-            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            $this->conn = new PDO("mysql:host=" . $credentials[0] . ";dbname=" . $credentials[1], $credentials[2], $credentials[3]);
             $this->conn->exec("set names utf8");
         }catch(PDOException $exception){
             echo "Connection error: " . $exception->getMessage();
