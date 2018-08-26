@@ -45,9 +45,9 @@ class Product{
         $stmt = $this->conn->prepare( $query );
      
         // bind id of product to be updated
-        $stmt->bindParam(1, $this->id);
+        $stmt->bindParam(1, $this->id); 
      
-        // execute query
+        // execute query 
         $stmt->execute();
      
         // get retrieved row
